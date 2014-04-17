@@ -9,6 +9,9 @@ var Units = new Object();
 Units[0] = FEET_UNITS;
 Units[1] = METRIC_UNITS;
 
+var BTUHREQWORDS = [ "Btuh's", "Watts" ];
+var btuhReqWord = BTUHREQWORDS[0];
+
 // Celsius to Fahrenheit
 var DEGREE_ABR = [ "F", "C" ];
 
@@ -42,6 +45,7 @@ function changeUnits() {
 	var unitSelectObjIndex = unitSelectObj.selectedIndex;
 	var spaceUnitValue = unitSelectObj[unitSelectObjIndex].value;
 	var spaceUnitText = unitSelectObj[unitSelectObjIndex].text;
+    btuhReqWord = BTUHREQWORDS[unitSelectObjIndex];
 	var unitFactor = Units[unitSelectObjIndex];
 	c.setUnitFactor(unitFactor);
 	// Change all space Units to Feet or Meters
@@ -163,7 +167,8 @@ function compute() {
 		btuhReqWordElement.innerHTML = "";
 	} else {
 		btuhReqNumElement.innerHTML = addCommas(btuhs);
-		btuhReqWordElement.innerHTML = "Btuh's";
+		//Feet - Bthu's
+		btuhReqWordElement.innerHTML = btuhReqWord;
 	}
 
 	// Suggestions

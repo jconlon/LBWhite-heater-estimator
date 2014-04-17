@@ -41,8 +41,15 @@ function HeaterCalc(unitFactor){
 		if(this.volume()==""){
 			return "";
 		}
-		//alert("UnitFactor="+this.unitFactor+" volume="+this.volume() +" tempRise="+this.tempRise);
+		if(this.unitFactor > 1){
+//			alert("Metric Calculation: ");
+			//Issue 10 The formula needs to be:"([total cubic meters of tent/marquee]*2.6)*([Desired Rise in room temp]*1.8)
+			return Math.round((2.6 * this.volume()) * (this.tempRise * 1.8));
+		}
+//		alert("Feet Calculation:");
 		return Math.round((this.unitFactor * this.volume()) * this.tempRise);
+		
+		
 	};
 	
 	this.myRound = function(value, places) {
@@ -74,6 +81,7 @@ function HeaterCalc(unitFactor){
 	this.d300 = function(){
 		return this.suggest(DIRECTOR_300);
 	};
+	
 	
 }
 
