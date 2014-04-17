@@ -3,7 +3,7 @@
  */
 
 var METRIC_UNITS = 8.454221213;
-var FEET_UNITS = 0.133;
+var FEET_UNITS = 0.266;// Changed for issue 9 from 0.133;
 
 var Units = new Object();
 Units[0] = FEET_UNITS;
