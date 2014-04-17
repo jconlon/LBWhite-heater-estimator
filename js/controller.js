@@ -84,15 +84,20 @@ function populate_fahrenheit_options(select) {
 function populate_celsius_options(select) {
 	select.options[select.options.length] = new Option('°2.5', 2.5);
 	select.options[select.options.length] = new Option('°5', 5);
+	select.options[select.options.length] = new Option('°7.5', 7.5);
 	select.options[select.options.length] = new Option('°10', 10);
+	select.options[select.options.length] = new Option('°12.5', 12.5);
 	select.options[select.options.length] = new Option('°15', 15);
+	select.options[select.options.length] = new Option('°17.5', 17.5);
 	select.options[select.options.length] = new Option('°20', 20);
+	select.options[select.options.length] = new Option('°22.5', 22.5);
 	select.options[select.options.length] = new Option('°25', 25);
+	select.options[select.options.length] = new Option('°27.5', 27.5);
 	select.options[select.options.length] = new Option('°30', 30);
+	select.options[select.options.length] = new Option('°32.5', 32.5);
 	select.options[select.options.length] = new Option('°35', 35);
+	select.options[select.options.length] = new Option('°37.5', 37.5);
 	select.options[select.options.length] = new Option('°40', 40);
-	select.options[select.options.length] = new Option('°45', 45);
-	select.options[select.options.length] = new Option('°50', 50);
 	select.options[3].selected = true;
 }
 
