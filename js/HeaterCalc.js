@@ -37,7 +37,7 @@ function HeaterCalc(unitFactor){
 		return volume;
 	};
 	
-	this.btuhReq = function(){
+	this.heatReq = function(){
 		if(this.volume()==""){
 			return "";
 		}
@@ -58,11 +58,21 @@ function HeaterCalc(unitFactor){
 	    return (Math.round(value * multiplier) / multiplier);
 	};
 	
+	
 	this.suggest = function(heater){
-		if(this.btuhReq()==""){
+		if(this.heatReq()==""){
 			return "";
 		}
-		var raw = this.btuhReq()/heater;
+		var realBtuhReq;
+		if(this.unitFactor > 1){
+//			alert("Metric Calculation: ");
+			//Issue 12: For metric ([calculated Watts required]*3.4121414799)/[btuh output available]
+			realBtuhReq = (this.heatReq()*3.4121414799);
+		}else{
+			realBtuhReq = this.heatReq();
+		}
+		
+		var raw = realBtuhReq/heater;
 		return raw.toFixed(1);
 	};
 

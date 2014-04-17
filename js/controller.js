@@ -158,10 +158,10 @@ function compute() {
 		volumeElement.innerHTML = addCommas(volume);
 	}
 
-	// Btuh Requirements
+	// heat Requirements
 	var btuhReqNumElement = document.getElementById("btuhReqNumber");
 	var btuhReqWordElement = document.getElementById("btuhReqWord");
-	var btuhs = c.btuhReq();
+	var btuhs = c.heatReq();
 	if (btuhs == "") {
 		btuhReqNumElement.innerHTML = "";
 		btuhReqWordElement.innerHTML = "";
