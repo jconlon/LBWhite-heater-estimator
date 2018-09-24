@@ -6,6 +6,7 @@ var PREMIER_80 = 80000;
 var PREMIER_170 = 170000;
 var PREMIER_350 = 350000;
 var DIRECTOR_300 = 258700;
+var FOREMAN_500 = 500000;
 
 function HeaterCalc(unitFactor){
 	
@@ -111,6 +112,10 @@ function HeaterCalc(unitFactor){
 	
 	this.p350 = function(){
 		return this.suggest(PREMIER_350);
+	};
+	
+	this.f500 = function(){
+		return this.suggest(FOREMAN_500);
 	};
 	
 }

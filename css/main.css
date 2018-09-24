@@ -14,7 +14,12 @@ exceeding our ideal of 460px. But since we’ve used ems to set this upper limit
 will scale up as the user increases the browser’s text size.*/
 #wrapper {
 	padding : 1em 1.5625em; /* 15px / 16px = 1em, 25px / 16px = 1.5625em*/
-	background-color: #002868; 
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3e60aa+0,39569c+15,365598+16,355294+19,324a8a+31,324786+32,283f75+47,273c71+48,253b6d+52,223263+64,1f315f+65,1d305b+68,1c2953+75,152147+88,132043+89,121a3e+96,10193a+97,0f1837+100 */
+	background: #3e60aa; /* Old browsers */
+	background: -moz-linear-gradient(top, #3e60aa 0%, #39569c 15%, #365598 16%, #355294 19%, #324a8a 31%, #324786 32%, #283f75 47%, #273c71 48%, #253b6d 52%, #223263 64%, #1f315f 65%, #1d305b 68%, #1c2953 75%, #152147 88%, #132043 89%, #121a3e 96%, #10193a 97%, #0f1837 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #3e60aa 0%,#39569c 15%,#365598 16%,#355294 19%,#324a8a 31%,#324786 32%,#283f75 47%,#273c71 48%,#253b6d 52%,#223263 64%,#1f315f 65%,#1d305b 68%,#1c2953 75%,#152147 88%,#132043 89%,#121a3e 96%,#10193a 97%,#0f1837 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #3e60aa 0%,#39569c 15%,#365598 16%,#355294 19%,#324a8a 31%,#324786 32%,#283f75 47%,#273c71 48%,#253b6d 52%,#223263 64%,#1f315f 65%,#1d305b 68%,#1c2953 75%,#152147 88%,#132043 89%,#121a3e 96%,#10193a 97%,#0f1837 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e60aa', endColorstr='#0f1837',GradientType=0 ); /* IE6-9 */
 	text-align: left;
 	max-width: 28.75em;    /* 460px / 16px = 28.75em */
 	color : white;
@@ -25,7 +30,14 @@ will scale up as the user increases the browser’s text size.*/
 
 h1{
 	text-align: center;
+	font-weight: normal;
 	font-size: 1.5em;        /* 24px / 16px = 1.5em */
+	
+}
+
+h2{
+	font-weight: normal;
+	font-size: 1.3em;
 	
 }
 
@@ -34,8 +46,8 @@ h1{
 	font-style: italic;
 }
 
-#intro, #p80, #p170, #p350, #d300, #volume {
-	font-weight: bold;
+#intro, #p80, #p170, #p350, #d300, #f500, #volume {
+	font-weight: normal;
 }
 
 .prompt {
@@ -44,14 +56,14 @@ h1{
 
 
 #unitSelect {
-	font-weight: bold;
+	font-weight: normal;
 }
 
 #riseSelect {
-	font-weight: bold;
+	font-weight: normal;
 	background: yellow;
 	color: red;
-	box-shadow: 0 0 .3125em #5cd053; /* 5px / 16px = 0.3125em */
+	box-shadow: 0 0 .3125em #ffff00; /* 5px / 16px = 0.3125em */
 }
 
 #btuhAnswer,#btusAnswer,#wattsAnswer{
@@ -118,7 +130,7 @@ ul ul{
 
 /* style the notification that informs users that the asterisk (*) indicates required fields.*/
 .required_notification {
-    color:#d45252;
+    color: #f26522;
     margin: .3125em 0 0 0; /* 5px / 16px = .3125em */
     display:inline;
     float:right;

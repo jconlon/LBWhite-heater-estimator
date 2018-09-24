@@ -197,7 +197,7 @@ function compute() {
 	// Suggestions
 
 	// Heaters
-	// "p80", "p170", "p350"
+	// "p80", "p170", "p350" and "f500"
 	var element = document.getElementById("p80");
 	element.innerHTML = c.p80();
 
@@ -206,6 +206,9 @@ function compute() {
 
 	element = document.getElementById("p350");
 	element.innerHTML = c.p350();
+	
+	element = document.getElementById("f500");
+	element.innerHTML = c.f500();
 
 }
 
