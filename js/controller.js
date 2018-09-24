@@ -23,6 +23,7 @@ var c = new HeaterCalc(Units[0]);
 window.onload = init;
 
 function init() {
+	console.log("INIT");
 	// Add listeners to select elements
 	var unitSelect = document.getElementById("unitSelect");
 	unitSelect.addEventListener("change", changeUnits, false);
@@ -35,6 +36,10 @@ function init() {
 	
 	var unitTempSelect = document.getElementById("unitTempSelect");
 	unitTempSelect.addEventListener("change", compute, false);
+	
+	var productSelect = document.getElementById("productSelect");
+	productSelect.options[0].selected=true;
+	productSelect.addEventListener("change", changeProductSelected, false);
 
 	// Add listeners to the spatial inputs
 	var f = document.volumecalc_form; // This is the form we'll we working
@@ -44,6 +49,20 @@ function init() {
 	f.length.addEventListener("change", compute, false);
 	window.addEventListener("load",function(){hideAddressBar();});
 	window.addEventListener("orientationchange",function(){hideAddressBar();});
+}
+
+
+
+function changeProductSelected() {
+	// get the product 
+	var target = document.getElementById("productSelect");
+	 var vis = document.querySelector('.vis'),  target = document.getElementById(this.value);
+     if (vis !== null) {
+         vis.className = 'inv';
+     }
+     if (target !== null ) {
+         target.className = 'vis';
+     }
 }
 
 function changeTempUnits() {
@@ -197,7 +216,6 @@ function compute() {
 	// Suggestions
 
 	// Heaters
-	// "p80", "p170", "p350" and "f500"
 	var element = document.getElementById("p80");
 	element.innerHTML = c.p80();
 
@@ -207,8 +225,69 @@ function compute() {
 	element = document.getElementById("p350");
 	element.innerHTML = c.p350();
 	
+	element = document.getElementById("t125");
+	element.innerHTML = c.t125();
+
+	element = document.getElementById("t170");
+	element.innerHTML = c.t170();
+
+	element = document.getElementById("t400");
+	element.innerHTML = c.t400();
+	
+	element = document.getElementById("tk75");
+	element.innerHTML = c.tk75();
+	
+	element = document.getElementById("tk125");
+	element.innerHTML = c.tk125();
+
+	element = document.getElementById("tk175");
+	element.innerHTML = c.tk175();
+
+	element = document.getElementById("tk210");
+	element.innerHTML = c.tk210();
+
+	element = document.getElementById("tk400");
+	element.innerHTML = c.tk400();
+	
+	element = document.getElementById("tk650");
+	element.innerHTML = c.tk650();
+	
+	element = document.getElementById("b400");
+	element.innerHTML = c.b400();
+
+	element = document.getElementById("b1000");
+	element.innerHTML = c.b1000();
+	
+
+	element = document.getElementById("n200");
+	element.innerHTML = c.n200();
+	
+	element = document.getElementById("n250");
+	element.innerHTML = c.n250();
+	
+	element = document.getElementById("w100");
+	element.innerHTML = c.w100();
+	
+	element = document.getElementById("w225");
+	element.innerHTML = c.w225();
+	
+	element = document.getElementById("s15");
+	element.innerHTML = c.s15();
+	
+	element = document.getElementById("s30");
+	element.innerHTML = c.s30();
+
+	element = document.getElementById("s35");
+	element.innerHTML = c.s35();
+	
+	element = document.getElementById("s125");
+	element.innerHTML = c.s125();
+	
 	element = document.getElementById("f500");
 	element.innerHTML = c.f500();
+	
+	element = document.getElementById("f750");
+	element.innerHTML = c.f750();
 
 }
 

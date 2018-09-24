@@ -91,11 +91,6 @@
 				<fieldset>
 					<legend>Room Temperature</legend>
 					<ul>
-					    <!-- 
-						<li><label class="prompt" for="desiredRiseInTemp">Select
-								Desired Rise in Room Temperature(°<span class="tempUnits">F</span>):
-						</label></li>
-						 -->
 						 <li><label class="prompt" for="desiredRiseInTemp">Select
 								Desired Rise in Room Temperature:
 						</label></li>
@@ -120,19 +115,6 @@
 						</select>
 						
 					   </li>
-					    <!--
-					   <li><label class="desiredTempRise" for="tmp">Temp Rise:</label> <input type="number"
-						name="tmpRise" required pattern="^\d*(\.\d*)?$"
-						title="Numbers with or without decimal points"
-						onChange="compute()" /> <span class="form_hint">Proper
-							format "11.2 or 11"</span> <span class="tempUnits">°f</span></li>
-					     
-					    
-						 <li><label for="btuhReq">Requirement for Room:</label> <span
-							id="btuhAnswer"> <span id="btuhReqNumber"></span> <span
-								id="btuhReqWord"></span>
-						</span></li>-->
-						 
 						<li><label for="btusReq">Requirement for Room in Btu/h's:</label> <span
 							id="btusAnswer"> <span id="btusReqNumber"></span> <span
 								id="btusReqWord"></span>
@@ -147,9 +129,29 @@
 			</div>
 			<!-- end .desiredRise -->
 		</form>
+		<div class="selections">
+		<h2>Select Heater Type:</h2>
+
+		<select id="productSelect">
+			<option value="productline_1">Premier Ductable Unit Heaters</option>
+			<option value="productline_2">Tradesman Portable Forced Air Heaters</option>
+			<option value="productline_3">Tradesman K Portable Kerosene Heaters</option>
+			<option value="productline_4">Foreman Indirect-Fired Heaters</option>
+			<option value="productline_5">Boss Direct-Fired Heaters</option>
+		 	<option value="productline_6">Norseman Convection Heaters</option>
+			<option value="productline_7">Workman Convection Heaters</option>
+			<option value="productline_8">Sun Blast Radiant Heaters</option>
+		</select>
+
+		</div>
+		<!-- end .selections -->
+				
 		<div class="suggestions">
 		<h2>May We Suggest:</h2>
-		<ul>
+		
+		<div id="productline_1" class="vis">
+		
+			<ul>
 				
 				<li>
 					<img src="img/Premier-80.png" alt="Premier80">
@@ -175,17 +177,200 @@
 								href="https://www.lbwhite.com/products/Tent-Heaters/Premier-Portable-Heater/">Premier
 									350's</a>
 				</li>
+			</ul>
+			
+		</div>
+		
+		<div id="productline_2" class="inv">
+		
+			<ul>
+				<li>
+					<img src="img/tradesman-125.png" alt="Tradesman 125">
+				
+					<span id="t125"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Portable-Forced-Air/">Tradesman 125's</a>
+				</li>
+				<li>
+					<img src="img/tradesman-170.png" alt="Tradesman 170">
+				
+					<span id="t170"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Portable-Forced-Air/">Tradesman 170's</a>
+				</li>
+						<li>
+					<img src="img/tradesman-400.png" alt="Tradesman 400">
+				
+					<span id="t400"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Portable-Forced-Air/">Tradesman 400's</a>
+				</li>
+			</ul>
+		
+		</div>
+		<div id="productline_3" class="inv">
+
+			<ul>
+				<li>
+					<img src="img/TradesmanK-75.png" alt="Tradesman K75">
+				
+					<span id="tk75"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Tradesman-Portable-Kerosene/">Tradesman K75's</a>
+				</li>
+				<li>
+					<img src="img/TradesmanK-125.png" alt="Tradesman K125">
+				
+					<span id="tk125"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Tradesman-Portable-Kerosene/">Tradesman K125's</a>
+				</li>
+				<li>
+					<img src="img/TradesmanK-175.png" alt="Tradesman K175">
+				
+					<span id="tk175"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Tradesman-Portable-Kerosene/">Tradesman K175's</a>
+				</li>
+				<li>
+					<img src="img/TradesmanK-210.png" alt="Tradesman K210">
+				
+					<span id="tk210"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Tradesman-Portable-Kerosene/">Tradesman K210's</a>
+				</li>
+				<li>
+					<img src="img/TradesmanK-400.png" alt="Tradesman K400">
+				
+					<span id="tk400"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Tradesman-Portable-Kerosene/">Tradesman K400's</a>
+				</li>
+				<li>
+					<img src="img/TradesmanK-650.png" alt="Tradesman K650">
+				
+					<span id="tk650"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Tradesman-Portable-Kerosene/">Tradesman K650's</a>
+				</li>
+			</ul>
+
+		</div>
+		<div id="productline_4" class="inv">
+
+			<ul>
 				<li>
 					<img src="img/DSCN7533-without-labels.png" alt="Foreman 500">
-				
+
 					<span id="f500"></span>
 								<a
 								href="https://www.lbwhite.com/products/Tent-Heaters/Foreman-Indirect-fired-heater/">Foreman 500's</a>
 				</li>
-				
+				<li>
+					<img src="img/foreman-750.png" alt="Foreman 750">
+
+					<span id="f750"></span>
+								<a
+								href="https://www.lbwhite.com/products/Tent-Heaters/Foreman-Indirect-fired-heater/">Foreman 750's</a>
+				</li>
 
 			</ul>
-			
+
+		</div>
+		<div id="productline_5" class="inv">
+
+			<ul>
+				<li>
+					<img src="img/boss-400.png" alt="Boss 400">
+
+					<span id="b400"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Boss_Direct-Fired/">Boss 400's</a>
+				</li>
+				<li>
+					<img src="img/boss-1000.png" alt="Boss 1000">
+
+					<span id="b1000"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Boss_Direct-Fired/">Boss 1000's</a>
+				</li>
+			</ul>
+
+		</div>
+		<div id="productline_6" class="inv">
+
+			<ul>
+				<li>
+					<img src="img/norseman-200.png" alt="Norseman 200 Plus">
+
+					<span id="n200"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Convection/">Norseman 200 Plus's</a>
+				</li>
+				<li>
+					<img src="img/norseman-250.png" alt="Norseman 250">
+
+					<span id="n250"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Convection/">Norseman 250's</a>
+				</li>
+			</ul>
+
+		</div>
+				<div id="productline_7" class="inv">
+
+			<ul>
+				<li>
+					<img src="img/workman-100.png" alt="Workman 100N Plus">
+
+					<span id="w100"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Convection/">Workman 200 Plus's</a>
+				</li>
+				<li>
+					<img src="img/workman-225.png" alt="Workman 225 Plus">
+
+					<span id="w225"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Convection/">Workman 225 Plus's</a>
+				</li>
+			</ul>
+
+		</div>
+		<div id="productline_8" class="inv">
+
+			<ul>
+				<li>
+					<img src="img/sun-blast-15.png" alt="Sun Blast 15">
+				
+					<span id="s15"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Radiant-Heaters/">Sun Blast 15's</a>
+				</li>
+				<li>
+					<img src="img/sun-blast-30.png" alt="Sun Blast 30">
+				
+					<span id="s30"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Radiant-Heaters/">Sun Blast 30's</a>
+				</li>
+				<li>
+					<img src="img/sun-blast-35.png" alt="Sun Blast 35">
+				
+					<span id="s35"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Radiant-Heaters/">Sun Blast 35's</a>
+				</li>
+				<li>
+					<img src="img/sun-blast-125.png" alt="Sun Blast 125">
+				
+					<span id="s125"></span>
+								<a
+								href="https://www.lbwhite.com/products/Construction-Heaters/Radiant-Heaters/">Sun Blast 125's</a>
+				</li>
+			</ul>
+		</div>
+
 		</div>
 		<!-- end .suggestions -->
 

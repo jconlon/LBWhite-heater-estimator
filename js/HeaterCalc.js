@@ -5,8 +5,34 @@
 var PREMIER_80 = 80000;
 var PREMIER_170 = 170000;
 var PREMIER_350 = 350000;
-var DIRECTOR_300 = 258700;
+
+var TRADESMAN_125 = 125000;
+var TRADESMAN_170 = 170000;
+var TRADESMAN_400 = 400000;
+
+var TRADESMAN_K75  =  75000;
+var TRADESMAN_K125 = 125000;
+var TRADESMAN_K175 = 175000;
+var TRADESMAN_K210 = 210000;
+var TRADESMAN_K400 = 400000;
+var TRADESMAN_K650 = 650000;
+
 var FOREMAN_500 = 500000;
+var FOREMAN_750 = 750000;
+
+var BOSS_400 =   400000;
+var BOSS_1000 = 1000000;
+
+var NORSEMAN_200 = 200000;
+var NORSEMAN_250 = 250000;
+
+var WORKMAN_100 = 100000;
+var WORKMAN_225 = 225000;
+
+var SUNBLAST_15 =   15000;
+var SUNBLAST_30 =   30000;
+var SUNBLAST_35 =   35000;
+var SUNBLAST_125 = 125000;
 
 function HeaterCalc(unitFactor){
 	
@@ -114,8 +140,82 @@ function HeaterCalc(unitFactor){
 		return this.suggest(PREMIER_350);
 	};
 	
+	this.t125 = function(){
+		return this.suggest(TRADESMAN_125);
+	};
+	
+	this.t170 = function(){
+		return this.suggest(TRADESMAN_170);
+	};
+	
+	this.t400 = function(){
+		return this.suggest(TRADESMAN_400);
+	};
+	
+	this.tk75 = function(){
+		return this.suggest(TRADESMAN_K75);
+	};
+	
+	this.tk125 = function(){
+		return this.suggest(TRADESMAN_K125);
+	};
+	
+	this.tk175 = function(){
+		return this.suggest(TRADESMAN_K175);
+	};
+	
+	this.tk210 = function(){
+		return this.suggest(TRADESMAN_K210);
+	};
+	
+	this.tk400 = function(){
+		return this.suggest(TRADESMAN_K400);
+	};
+	
+	this.tk650 = function(){
+		return this.suggest(TRADESMAN_K650);
+	};
+	
 	this.f500 = function(){
 		return this.suggest(FOREMAN_500);
+	};
+	this.f750 = function(){
+		return this.suggest(FOREMAN_750);
+	};
+	
+	this.b400 = function(){
+		return this.suggest(BOSS_400);
+	};
+	this.b1000 = function(){
+		return this.suggest(BOSS_1000);
+	};
+	
+	this.n200 = function(){
+		return this.suggest(NORSEMAN_200);
+	};
+	this.n250 = function(){
+		return this.suggest(NORSEMAN_250);
+	};
+	
+	this.w100 = function(){
+		return this.suggest(WORKMAN_100);
+	};
+	this.w225 = function(){
+		return this.suggest(WORKMAN_225);
+	};
+	
+	this.s15 = function(){
+		return this.suggest(SUNBLAST_15);
+	};
+	this.s30 = function(){
+		return this.suggest(SUNBLAST_30);
+	};
+	
+	this.s35 = function(){
+		return this.suggest(SUNBLAST_35);
+	};
+	this.s125 = function(){
+		return this.suggest(SUNBLAST_125);
 	};
 	
 }

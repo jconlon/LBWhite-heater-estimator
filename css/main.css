@@ -46,9 +46,13 @@ h2{
 	font-style: italic;
 }
 
-#intro, #p80, #p170, #p350, #d300, #f500, #volume {
+
+
+#intro, #p80, #p170, #p350, #t170, #t400, #tk75, #tk125, #tk175, #tk210, #tk400, #tk650, #b400, #b1000, #n200, #n250, #w100, #w225, #s15, #s30, #s35, #s125, #f500, #f750, #t125, #volume {
 	font-weight: normal;
 }
+
+
 
 .prompt {
 	font-style: italic;
@@ -222,4 +226,5 @@ input:required, textarea:required {
 .volumecalc_form input:required:valid + .form_hint {background: #28921f;} /* change form hint color when valid */
 .volumecalc_form input:required:valid + .form_hint::before {color:#28921f;} /* change form hint arrow color when valid */
 
+.inv {display: none;}
 
