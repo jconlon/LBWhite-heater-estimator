@@ -58,6 +58,31 @@ function HeaterCalc(unitFactor){
 	    return (Math.round(value * multiplier) / multiplier);
 	};
 	
+	this.heatReqBtu = function(){
+		if(this.heatReq()==""){
+			return "";
+		}
+		if(this.unitFactor > 1){
+//			alert("Metric Calculation: ");
+			//For btus to watts 
+			return (this.heatReq()*3.4121414799);
+		}else{
+			return this.heatReq();
+		}
+	}
+	
+	this.heatReqWatts = function(){
+		if(this.heatReq()==""){
+			return "";
+		}
+		if(this.unitFactor > 1){
+//			alert("Metric Calculation: ");
+			return this.heatReq();
+		}else{
+			//Imperial watts to btus ([calculated Watts required]*3.4121414799)/[btuh output available]
+			return this.heatReq()/3.4121414799;
+		}
+	}
 	
 	this.suggest = function(heater){
 		if(this.heatReq()==""){
@@ -87,11 +112,6 @@ function HeaterCalc(unitFactor){
 	this.p350 = function(){
 		return this.suggest(PREMIER_350);
 	};
-	
-	this.d300 = function(){
-		return this.suggest(DIRECTOR_300);
-	};
-	
 	
 }
 

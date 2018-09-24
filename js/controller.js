@@ -26,8 +26,15 @@ function init() {
 	// Add listeners to select elements
 	var unitSelect = document.getElementById("unitSelect");
 	unitSelect.addEventListener("change", changeUnits, false);
+	
+	var unitTempSelect = document.getElementById("unitTempSelect");
+	unitTempSelect.addEventListener("change", changeTempUnits, false);
+	
 	var tempRiseSelect = document.getElementById("riseSelect");
 	tempRiseSelect.addEventListener("change", compute, false);
+	
+	var unitTempSelect = document.getElementById("unitTempSelect");
+	unitTempSelect.addEventListener("change", compute, false);
 
 	// Add listeners to the spatial inputs
 	var f = document.volumecalc_form; // This is the form we'll we working
@@ -39,19 +46,11 @@ function init() {
 	window.addEventListener("orientationchange",function(){hideAddressBar();});
 }
 
-function changeUnits() {
-	// get the spatial measurementUnit
-	var unitSelectObj = document.getElementById("unitSelect");
+function changeTempUnits() {
+	// get the temp rise measurementUnit  f or c 
+	var unitSelectObj = document.getElementById("unitTempSelect");
 	var unitSelectObjIndex = unitSelectObj.selectedIndex;
-	var spaceUnitValue = unitSelectObj[unitSelectObjIndex].value;
-	var spaceUnitText = unitSelectObj[unitSelectObjIndex].text;
-    btuhReqWord = BTUHREQWORDS[unitSelectObjIndex];
-	var unitFactor = Units[unitSelectObjIndex];
-	c.setUnitFactor(unitFactor);
-	// Change all space Units to Feet or Meters
-	changeMeasurementUnitNames(spaceUnitValue, "spaceUnits");
-	changeMeasurementUnitNames(spaceUnitText, "spaceUnitsName");
-
+	
 	// Empty the tempRiseSelect element
 	var tempRiseSelectObj = document.getElementById("riseSelect");
 	// Remove the listener to prevent triggering events
@@ -67,6 +66,22 @@ function changeUnits() {
 
 	// change temp measurement Units a
 	changeMeasurementUnitNames(DEGREE_ABR[unitSelectObjIndex], "tempUnits");
+	compute();
+}
+
+function changeUnits() {
+	// get the spatial measurementUnit
+	var unitSelectObj = document.getElementById("unitSelect");
+	var unitSelectObjIndex = unitSelectObj.selectedIndex;
+	var spaceUnitValue = unitSelectObj[unitSelectObjIndex].value;
+	var spaceUnitText = unitSelectObj[unitSelectObjIndex].text;
+    btuhReqWord = BTUHREQWORDS[unitSelectObjIndex];
+	var unitFactor = Units[unitSelectObjIndex];
+	c.setUnitFactor(unitFactor);
+	// Change all space Units to Feet or Meters
+	changeMeasurementUnitNames(spaceUnitValue, "spaceUnits");
+	changeMeasurementUnitNames(spaceUnitText, "spaceUnitsName");
+
 	compute();
 }
 
@@ -157,25 +172,32 @@ function compute() {
 	} else {
 		volumeElement.innerHTML = addCommas(volume);
 	}
-
-	// heat Requirements
-	var btuhReqNumElement = document.getElementById("btuhReqNumber");
-	var btuhReqWordElement = document.getElementById("btuhReqWord");
-	var btuhs = c.heatReq();
-	if (btuhs == "") {
-		btuhReqNumElement.innerHTML = "";
-		btuhReqWordElement.innerHTML = "";
+	
+	// heat Requirements BTUS
+	var btusReqNumElement = document.getElementById("btusReqNumber");
+	var btus = c.heatReqBtu();
+	if (btus == "") {
+		btusReqNumElement.innerHTML = "";
+		
 	} else {
-		btuhReqNumElement.innerHTML = addCommas(btuhs);
-		//Feet - Bthu's
-		btuhReqWordElement.innerHTML = btuhReqWord;
+		btusReqNumElement.innerHTML = addCommas(btus);
+		
+	}
+	
+	// heat Requirements Watts
+	var wattsReqNumElement = document.getElementById("wattsReqNumber");
+	var watts = c.heatReqWatts();
+	if (watts == "") {
+		wattsReqNumElement.innerHTML = "";
+		
+	} else {
+		wattsReqNumElement.innerHTML = addCommas(watts);
 	}
 
 	// Suggestions
 
 	// Heaters
-
-	// "p80", "p170", "p350", "d300"
+	// "p80", "p170", "p350"
 	var element = document.getElementById("p80");
 	element.innerHTML = c.p80();
 
@@ -184,9 +206,6 @@ function compute() {
 
 	element = document.getElementById("p350");
 	element.innerHTML = c.p350();
-
-	element = document.getElementById("d300");
-	element.innerHTML = c.d300();
 
 }
 

@@ -54,7 +54,7 @@ h1{
 	box-shadow: 0 0 .3125em #5cd053; /* 5px / 16px = 0.3125em */
 }
 
-#btuhAnswer{
+#btuhAnswer,#btusAnswer,#wattsAnswer{
 	font-weight: Bold;
 	color: red;
 	background-color: yellow;
