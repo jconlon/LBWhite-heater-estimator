@@ -12,7 +12,7 @@ An HTML5 Offline Web application for calculating tent and room volumes, btu requ
 Testing Website
 ------------
 
-* Testing website is now at: [L.B. White Heater Estimator](http://jconlon.github.io/)
+* Testing website is now at: [L.B. White Heater Estimator](https://jconlon.github.io/LBWhite-heater-estimator/)
 
 Creating Touch Icons
 ------------
