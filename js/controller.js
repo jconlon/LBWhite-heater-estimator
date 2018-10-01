@@ -210,7 +210,7 @@ function compute() {
 		wattsReqNumElement.innerHTML = "";
 		
 	} else {
-		 wattsReqNumElement.innerHTML = addCommas(Math.round(watts));
+		wattsReqNumElement.innerHTML = addCommas(Math.round(watts));
 	}
 
 	// Suggestions
