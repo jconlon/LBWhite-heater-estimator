@@ -13,7 +13,9 @@ An HTML5 Offline Web PWA for calculating tent and room volumes, btu requirements
 
 The testing website for this project is now at: [L.B. White Heater Estimator](https://jconlon.github.io/LBWhite-heater-estimator/)
 
-### How to Clearing Old Version from browsers
+### How to Reload New Version in Browsers
+
+You will have to clear the stored data from the old version in the browser first.  Goto the test site noted above, then for each browser follow these steps. 
 
 [Firefox](https://support.mozilla.org/en-US/kb/storage)
 
