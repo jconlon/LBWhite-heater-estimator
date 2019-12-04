@@ -7,11 +7,21 @@ Progressive Web Application (PWA) based tool for heater sizing the L.B. White he
 An HTML5 Offline Web PWA for calculating tent and room volumes, btu requirements and L.B. White Heater recommendations.
 
 
-## Testing Website
+## Testing 
+
+### Application Website
 
 The testing website for this project is now at: [L.B. White Heater Estimator](https://jconlon.github.io/LBWhite-heater-estimator/)
 
-Creating Touch Icons
+### Unit Conversion Website
+
+For calculating temperature increment conversions as well as other unit conversions a good website is: [convert-me.com](https://www.convert-me.com/en/convert/temperature-inc/?u=dcelsiusi&v=5)
+
+### Unit Testing
+
+```js/HeaterCalc-test.js``` is a Unit Test for the ```js/HeaterCalc.js``` main calculator engine.  It utilizes a node based library [tape](https://github.com/substack/tape)
+
+## Creating Touch Icons
 ------------
 
 ### Android

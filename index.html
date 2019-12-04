@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" manifest="offline.appcache">
 
-<!-- Copyright 2014 Verticon, Inc. all rights reserved.        -->
+<!-- Copyright 2019 Verticon, Inc. all rights reserved.        -->
 <head>
 <title>LB White Heater Estimator</title>
 <meta charset="utf-8">
@@ -37,6 +37,7 @@
 <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png">
 
 <link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="img/favicon.ico">
 <script src="js/HeaterCalc.js"></script>
 <script src="js/controller.js"></script>
 </head>
@@ -50,10 +51,19 @@
 		
 
 
-		<!-- 
-  -- The stuff below is an HTML table inside of an HTML form.  It gets tricky!
-  -- Notice the event handlers on all the form input elements.
-  -->
+		<!-- Following is an HTML table inside of an HTML form. 
+			 Notice the event handlers on all the form input elements.
+
+			 Previous inputs for dimensions used: 
+				 required pattern="^\d*(\.\d*)?$"
+			 but this was not preventing wrong inputs of negative numbers.
+
+			 Setting inputs to text with:
+			 required pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
+			 prevented this but browsers did not show a up/down incrementor.
+
+			 Decided to set this to 
+  		-->
 		<form name="volumecalc_form">
 			<fieldset class="volumecalc_form">
 				<legend>Room Measurements</legend>
@@ -66,20 +76,20 @@
 					</span> <span class="required_notification">* Denotes Required
 							Field</span></li>
 					<li><label for="height">Height:</label> <input type="number"
-						name="height" required pattern="^\d*(\.\d*)?$"
+						name="height" min="1" 
 						title="Numbers with or without decimal points"
 						onChange="compute()" /> <span class="form_hint">Proper
-							format "11.2 or 11"</span> <span class="spaceUnits">ft.</span></li>
+							format "11.5 or 11"</span> <span class="spaceUnits">ft.</span></li>
 					<li><label for="width">Width:</label> <input type="number"
-						name="width" required pattern="^\d*(\.\d*)?$"
+						name="width" min="1" 
 						title="Numbers with or without decimal points"
 						onChange="compute()" /> <span class="form_hint">Proper
-							format "11.2 or 11"</span> <span class="spaceUnits">ft.</span></li>
+							format "11.5 or 11"</span> <span class="spaceUnits">ft.</span></li>
 					<li><label for="length">Length:</label> <input type="number"
-						name="length" required pattern="^\d*(\.\d*)?$"
+						name="length" min="1" 
 						title="Numbers with or without decimal points"
 						onChange="compute()" /> <span class="form_hint">Proper
-							format "11.2 or 11"</span> <span class="spaceUnits">ft.</span></li>
+							format "11.5 or 11"</span> <span class="spaceUnits">ft.</span></li>
 					<li>Cubic <span class="spaceUnitsName">Feet</span> of the
 						Area: <span id="volume"></span>
 					</li>
