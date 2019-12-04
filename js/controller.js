@@ -1,33 +1,39 @@
 /**
- * 
+ * Main controller.  Utilizes the HeaterCalc class.
  */
 
-var METRIC_UNITS = 8.454221213;
-var FEET_UNITS = 0.133;// Changed back to original value from 0.266; see Issue 9 and 18
+const METRIC_UNITS = 8.454221213;
+const FEET_UNITS = 0.133;// Changed back to original value from 0.266; see Issue 9 and 18
 
-var Units = new Object();
+const Units = new Object();
 Units[0] = FEET_UNITS;
 Units[1] = METRIC_UNITS;
 
-var BTUHREQWORDS = [ "Btuh's", "Watts" ];
+const BTUHREQWORDS = [ "Btuh's", "Watts" ];
 var btuhReqWord = BTUHREQWORDS[0];
 
 // Celsius to Fahrenheit
-var DEGREE_ABR = [ "F", "C" ];
+const DEGREE_ABR = [ "F", "C" ];
 
-var TEMP_OPTIONS = [ populate_fahrenheit_options, populate_celsius_options ];
+const TEMP_OPTIONS = [ populate_fahrenheit_options, populate_celsius_options ];
 
 // Create the HeatCalc Feet and Fahrenheit
-var c = new HeaterCalc(Units[0]);
+const calculator = new HeaterCalc(Units[0]);
 
 window.onload = init;
 
+/**
+ * Initializes all document element listeners on page load
+ */
 function init() {
 	console.log("INIT");
-	// Add listeners to select elements
-	var unitSelect = document.getElementById("unitSelect");
-	unitSelect.addEventListener("change", changeUnits, false);
+	// Add listeners to selection elements
 	
+	//Feet or Meter selection
+	var unitSelect = document.getElementById("unitSelect");
+	unitSelect.addEventListener("change", changeVolumeUnits, false);
+
+	//Fahrenheit or Celsius selection
 	var unitTempSelect = document.getElementById("unitTempSelect");
 	unitTempSelect.addEventListener("change", changeTempUnits, false);
 	
@@ -51,8 +57,9 @@ function init() {
 	window.addEventListener("orientationchange",function(){hideAddressBar();});
 }
 
-
-
+/**
+ * Called when products are selected.
+ */
 function changeProductSelected() {
 	// get the product 
 	var target = document.getElementById("productSelect");
@@ -65,6 +72,10 @@ function changeProductSelected() {
      }
 }
 
+/**
+ * Related to Issue #23 Btu’hs s are not the same when showing Fahrenheit and Celsius 
+ * for same volume room. 
+ */
 function changeTempUnits() {
 	// get the temp rise measurementUnit  f or c 
 	var unitSelectObj = document.getElementById("unitTempSelect");
@@ -83,12 +94,13 @@ function changeTempUnits() {
 	// Add the listener back in
 	// tempRiseSelectObj.addEventListener("change",compute,false);
 
-	// change temp measurement Units a
+	// change temp measurement Units 
 	changeMeasurementUnitNames(DEGREE_ABR[unitSelectObjIndex], "tempUnits");
+	calculator.setTempUnits(DEGREE_ABR[unitSelectObjIndex]);
 	compute();
 }
 
-function changeUnits() {
+function changeVolumeUnits() {
 	// get the spatial measurementUnit
 	var unitSelectObj = document.getElementById("unitSelect");
 	var unitSelectObjIndex = unitSelectObj.selectedIndex;
@@ -96,7 +108,7 @@ function changeUnits() {
 	var spaceUnitText = unitSelectObj[unitSelectObjIndex].text;
     btuhReqWord = BTUHREQWORDS[unitSelectObjIndex];
 	var unitFactor = Units[unitSelectObjIndex];
-	c.setUnitFactor(unitFactor);
+	calculator.setVolumeUnits(unitFactor);
 	// Change all space Units to Feet or Meters
 	changeMeasurementUnitNames(spaceUnitValue, "spaceUnits");
 	changeMeasurementUnitNames(spaceUnitText, "spaceUnitsName");
@@ -180,12 +192,12 @@ function compute() {
 	var tempRiseIndex = tempRiseSelectObj.selectedIndex;
 	var tempRise = tempRiseSelectObj[tempRiseIndex].value;
 
-	c.setDimensions(height, width, length);
-	c.setTempRise(tempRise);
+	calculator.setDimensions(height, width, length);
+	calculator.setTempRise(tempRise);
 
 	// Volume
 	var volumeElement = document.getElementById("volume");
-	var volume = c.volume();
+	var volume = calculator.volume();
 	if (volume == "" || volume == 0) {
 		volumeElement.innerHTML = "";
 	} else {
@@ -194,7 +206,7 @@ function compute() {
 	
 	// heat Requirements BTUS
 	var btusReqNumElement = document.getElementById("btusReqNumber");
-	var btus = c.heatReqBtu();
+	var btus = calculator.heatReqBtu();
 	if (btus == "") {
 		btusReqNumElement.innerHTML = "";
 		
@@ -205,7 +217,7 @@ function compute() {
 	
 	// heat Requirements Watts
 	var wattsReqNumElement = document.getElementById("wattsReqNumber");
-	var watts = c.heatReqWatts();
+	var watts = calculator.heatReqWatts();
 	if (watts == "") {
 		wattsReqNumElement.innerHTML = "";
 		
@@ -217,77 +229,77 @@ function compute() {
 
 	// Heaters
 	var element = document.getElementById("p80");
-	element.innerHTML = c.p80();
+	element.innerHTML = calculator.p80();
 
 	element = document.getElementById("p170");
-	element.innerHTML = c.p170();
+	element.innerHTML = calculator.p170();
 
 	element = document.getElementById("p350");
-	element.innerHTML = c.p350();
+	element.innerHTML = calculator.p350();
 	
 	element = document.getElementById("t125");
-	element.innerHTML = c.t125();
+	element.innerHTML = calculator.t125();
 
 	element = document.getElementById("t170");
-	element.innerHTML = c.t170();
+	element.innerHTML = calculator.t170();
 
 	element = document.getElementById("t400");
-	element.innerHTML = c.t400();
+	element.innerHTML = calculator.t400();
 	
 	element = document.getElementById("tk75");
-	element.innerHTML = c.tk75();
+	element.innerHTML = calculator.tk75();
 	
 	element = document.getElementById("tk125");
-	element.innerHTML = c.tk125();
+	element.innerHTML = calculator.tk125();
 
 	element = document.getElementById("tk175");
-	element.innerHTML = c.tk175();
+	element.innerHTML = calculator.tk175();
 
 	element = document.getElementById("tk210");
-	element.innerHTML = c.tk210();
+	element.innerHTML = calculator.tk210();
 
 	element = document.getElementById("tk400");
-	element.innerHTML = c.tk400();
+	element.innerHTML = calculator.tk400();
 	
 	element = document.getElementById("tk650");
-	element.innerHTML = c.tk650();
+	element.innerHTML = calculator.tk650();
 	
 	element = document.getElementById("b400");
-	element.innerHTML = c.b400();
+	element.innerHTML = calculator.b400();
 
 	element = document.getElementById("b1000");
-	element.innerHTML = c.b1000();
+	element.innerHTML = calculator.b1000();
 	
 
 	element = document.getElementById("n200");
-	element.innerHTML = c.n200();
+	element.innerHTML = calculator.n200();
 	
 	element = document.getElementById("n250");
-	element.innerHTML = c.n250();
+	element.innerHTML = calculator.n250();
 	
 	element = document.getElementById("w100");
-	element.innerHTML = c.w100();
+	element.innerHTML = calculator.w100();
 	
 	element = document.getElementById("w225");
-	element.innerHTML = c.w225();
+	element.innerHTML = calculator.w225();
 	
 	element = document.getElementById("s15");
-	element.innerHTML = c.s15();
+	element.innerHTML = calculator.s15();
 	
 	element = document.getElementById("s30");
-	element.innerHTML = c.s30();
+	element.innerHTML = calculator.s30();
 
 	element = document.getElementById("s35");
-	element.innerHTML = c.s35();
+	element.innerHTML = calculator.s35();
 	
 	element = document.getElementById("s125");
-	element.innerHTML = c.s125();
+	element.innerHTML = calculator.s125();
 	
 	element = document.getElementById("f500");
-	element.innerHTML = c.f500();
+	element.innerHTML = calculator.f500();
 	
 	element = document.getElementById("f750");
-	element.innerHTML = c.f750();
+	element.innerHTML = calculator.f750();
 
 }
 
