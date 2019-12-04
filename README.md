@@ -13,6 +13,12 @@ An HTML5 Offline Web PWA for calculating tent and room volumes, btu requirements
 
 The testing website for this project is now at: [L.B. White Heater Estimator](https://jconlon.github.io/LBWhite-heater-estimator/)
 
+### How to Clearing Old Version from browsers
+
+[Firefox](https://support.mozilla.org/en-US/kb/storage)
+
+[Chrome - developer tools](https://developers.google.com/web/tools/chrome-devtools/open) > Application (in the menu bar) > Clear Storage > Clear site data
+
 ### Unit Conversion Website
 
 For calculating temperature increment conversions as well as other unit conversions a good website is: [convert-me.com](https://www.convert-me.com/en/convert/temperature-inc/?u=dcelsiusi&v=5)
