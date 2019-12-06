@@ -139,3 +139,24 @@ test('BTUs for volume in Meters for same temperature rise of °C and °F', (asse
 
   assert.end();
 });
+
+test('BTUs for constant feet volume equivilant temperature rise of °F and °C', (assert) => {
+  var c = new HeaterCalc(FEET_UNITS);
+  c.setDimensions(10, 10, 40);
+  c.setTempRise(50);
+  //Farenheit is the default tempUnit
+  actual = c.heatReqBtu();
+  const expected =  26600;
+  assert.equal(actual, expected,
+    'With Feet Units volume 4000 and 50 degrees F, the BTUS Should be 26600 Btus.');
+
+  //Change tempUnits to celsius and TempRise to the corresponding converted
+  //value of 27.7777778 C
+  c.setTempUnits('C');
+  c.setTempRise(27.7777778);
+
+  actual = c.heatReqBtu();
+  assert.equal(actual, expected,
+    'With Feet Units volume 4000 and 27.78 degrees C, the BTUS Should be 1330 Btus.');
+  assert.end();
+});
