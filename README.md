@@ -23,7 +23,9 @@ You will have to clear the stored data from the old version in the browser first
 
 ### Unit Conversion Website
 
-For calculating temperature increment conversions as well as other unit conversions a good website is: [convert-me.com](https://www.convert-me.com/en/convert/temperature-inc/?u=dcelsiusi&v=5)
+For calculating temperature increment conversions as well as other unit conversions see: 
+* [convert-me.com](https://www.convert-me.com/en/convert/temperature-inc/?u=dcelsiusi&v=5)
+* [F to C Conversion](https://www.internet4classrooms.com/F2C.htm)
 
 ### Unit Testing
 
