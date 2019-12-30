@@ -46,11 +46,14 @@
 		<h1>
 			<img src="img/LBW_White_Logo.png" alt="L.B. White">
 		</h1>
-		<h1>Heater Estimator</h1>
-		<p id="intro" align="center">This tool assumes there is no insulation present. If insulation is present, fewer heaters may be required. To determine Btu/h heater requirements...</p>
 		
-
-
+			<h1>Heater Estimator</h1>
+		
+		
+		<p id="intro" align="center">This tool assumes there is no insulation present. If insulation is present, fewer heaters may be required. 
+			<span title="v2.01">To determine Btu/h heater requirements...</span>
+		</p>
+		
 		<!-- Following is an HTML table inside of an HTML form. 
 			 Notice the event handlers on all the form input elements.
 
@@ -104,24 +107,15 @@
 						 <li><label class="prompt" for="desiredRiseInTemp">Select
 								Desired Rise in Room Temperature:
 						</label></li>
+						<li><input id="riseSelectUnits" type="number"
+							name="tempRise" min="2.5" max="100" step="2.5"
+							title="Numbers with or without decimal points"
+							/> <span class="form_hint">Proper
+								format "60.5 or 60.5"</span> <span class="tempRiseUnits">°degrees</span>
 						
-						<li><select id="riseSelect">
-								<option value="5">°5</option>
-								<option value="10">°10</option>
-								<option value="20">°20</option>
-								<option value="30">°30</option>
-								<option value="40">°40</option>
-								<option value="50">°50</option>
-								<option value="60" selected>°60</option>
-								<option value="70">°70</option>
-								<option value="80">°80</option>
-								<option value="90">°90</option>
-								<option value="100">°100</option>
-						</select>
 						<select id="unitTempSelect">
 								<option value="f" selected>Fahrenheit</option>
 								<option value="c">Celsius</option>
-								
 						</select>
 						
 					   </li>

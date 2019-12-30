@@ -34,6 +34,9 @@ const SUNBLAST_30 =   30000;
 const SUNBLAST_35 =   35000;
 const SUNBLAST_125 = 125000;
 
+// const METRIC_UNITS = 8.454221213;
+const FEETUNITS = 0.133;// Changed back to original value from 0.266; see Issue 9 and 18
+
 function HeaterCalc(volumeUnits){
 	
 	this.volumeUnits =volumeUnits;
@@ -42,8 +45,10 @@ function HeaterCalc(volumeUnits){
 	this.lenght = 0;
 	this.tempRise = 0;
 	if(volumeUnits == 0.133){
+		//volumeUnits is Feet set default temp Fahrenheit
 		this.tempUnits = 'F';
 	}else{
+		//volumeUnits is Meters set default temp Celsius
 		this.tempUnits = 'C';
 	}
 	
@@ -72,32 +77,35 @@ function HeaterCalc(volumeUnits){
 	    }
 		return volume;
 	};
-	
+
+	this.isVolumeUnitMeters = function(){
+		return this.volumeUnits > 1;
+	}
+
+	this.c
+
+	// For Metric height, width, and length always calculate back
+	// to feet "in the background"
+	// This feature obsoletes - Issue 10 The formula needs to be:"
+	// ([total cubic meters of tent/marquee]*2.6)*([Desired Rise in room temp]*1.8)
 	this.heatReq = function(){
-		if(this.volume()==""){
+		var roomVolume = this.volume();
+		if(roomVolume==""){
 			return "";
 		}
-		if(this.volumeUnits > 1){
-
-			//Issue 10 The formula needs to be:"([total cubic meters of tent/marquee]*2.6)*([Desired Rise in room temp]*1.8)
-			if(this.tempUnits == 'C'){
-				console.log("Metric Volume/Celsius Calculation");
-				//This is the metric volume and Celsius calculation
-				return Math.round((2.6 * this.volume()) * (this.convertCelsiusToFarienheit(this.tempRise)));
-			}
-			//This is the metric volume and Farenheit combination
-			console.log("Metric Volume/Farenheit Calculation");
-			return Math.round((2.6 * this.volume()) * this.tempRise);
+		if(this.isVolumeUnitMeters()){
+			// console.log("Metric Volume converting to Feet Volume");
+			roomVolume = this.convertMetricToFeetVolume(this.volume());
 		}
-
+		//tempRise are now all calculated in Fahrenheit
+		var tempRiseInF = this.tempRise;
 		if(this.tempUnits == 'C'){
-			console.log("Feet volume and Celsius calculation "+this.tempRise);
-			console.log("Celsius to Farenheit "+this.convertCelsiusToFarienheit(this.tempRise));
-			return Math.round((this.volumeUnits * this.volume()) * (this.convertCelsiusToFarienheit(this.tempRise)));
-		}else{
-			console.log("Feet volume and Farenheit calculation");
-			return Math.round((this.volumeUnits * this.volume()) * this.tempRise);
+			// console.log("Feet volume and Celsius calculation "+this.tempRise);
+			// console.log("Celsius to Farenheit "+this.convertCelsiusToFarienheit(this.tempRise));
+			tempRiseInF= this.convertCelsiusToFarienheit(this.tempRise);
 		}
+		// console.log("Feet volume and Farenheit calculation");
+		return Math.round((FEETUNITS * roomVolume) * tempRiseInF);
 		
 			
 	};
@@ -106,12 +114,24 @@ function HeaterCalc(volumeUnits){
 		return tempRiseCelsius * 1.8;
 	}
 
+	this.convertFarienheitToCelsius = function(tempRiseFarienheit) {
+		return tempRiseFarienheit / 1.8;
+	}
+
+	this.convertMetricToFeet = function(meters) {
+		return meters * 3.2808;
+	}
+
+	this.convertFeetToMetric = function(feet) {
+		return feet / 3.2808;
+	}
+
 	this.convertMetricToFeetVolume = function(squareMeters) {
-		return squareMeters * 10.76;
+		return squareMeters * 35.315;
 	}
 
 	this.convertFeetToMetricVolume = function(squareFeet) {
-		return squareFeet * 0.0929;
+		return squareFeet / 35.315;
 	}
 	
 	this.myRound = function(value, places) {
@@ -124,40 +144,24 @@ function HeaterCalc(volumeUnits){
 		if(this.heatReq()==""){
 			return "";
 		}
-		if(this.volumeUnits > 1){
-//			alert("Metric Calculation: ");
-			//For btus to watts 
-			return (this.heatReq()*3.4121414799);
-		}else{
-			return this.heatReq();
-		}
+
+		return this.heatReq();
 	}
 	
 	this.heatReqWatts = function(){
 		if(this.heatReq()==""){
 			return "";
 		}
-		if(this.volumeUnits > 1){
-//			alert("Metric Calculation: ");
-			return this.heatReq();
-		}else{
-			//Imperial watts to btus ([calculated Watts required]*3.4121414799)/[btuh output available]
-			return this.heatReq()/3.4121414799;
-		}
+
+		//Imperial watts to btus ([calculated Watts required]*3.4121414799)/[btuh output available]
+		return this.heatReq()/3.4121414799;
 	}
 	
 	this.suggest = function(heater){
 		if(this.heatReq()==""){
 			return "";
 		}
-		var realBtuhReq;
-		if(this.volumeUnits > 1){
-//			alert("Metric Calculation: ");
-			//Issue 12: For metric ([calculated Watts required]*3.4121414799)/[btuh output available]
-			realBtuhReq = (this.heatReq()*3.4121414799);
-		}else{
-			realBtuhReq = this.heatReq();
-		}
+		var realBtuhReq = this.heatReq();
 		
 		var raw = realBtuhReq/heater;
 		return raw.toFixed(1);
@@ -252,7 +256,7 @@ function HeaterCalc(volumeUnits){
 	this.s125 = function(){
 		return this.suggest(SUNBLAST_125);
 	};
-	
+
 }
 
 
