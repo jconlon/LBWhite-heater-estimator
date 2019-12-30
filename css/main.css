@@ -70,6 +70,13 @@ h2{
 	box-shadow: 0 0 .3125em #ffff00; /* 5px / 16px = 0.3125em */
 }
 
+#riseSelectUnits {
+	font-weight: normal;
+	background: yellow;
+	color: red;
+	box-shadow: 0 0 .3125em #ffff00; /* 5px / 16px = 0.3125em */
+}
+
 #btuhAnswer,#btusAnswer,#wattsAnswer{
 	font-weight: Bold;
 	color: red;
